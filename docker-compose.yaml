@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  reservation-service:
+    build: .
+    ports:
+      - "8082:8082"
+    depends_on:
+      - eureka-server
+    networks:
+      - my-network
+    environment:
+      - SERVICE_URL_DEFAULT_ZONE=http://eureka:8761/eureka/
+
+networks:
+  my-network:
+    driver: bridge
