@@ -14,7 +14,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'mvn clean install'
+                    bat 'mvn clean install'
                 }
             }
         }
@@ -22,7 +22,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh 'mvn test'
+                    bat 'mvn test'
                 }
             }
         }
@@ -30,7 +30,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    sh 'docker build -t mixaron/reservation-service:${params.IMAGE_TAG} .'
+                    bat 'docker build -t mixaron/reservation-service:${params.IMAGE_TAG} .'
                 }
             }
         }
@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-hub-credentials', url: '') {
-                        sh 'docker push your-dockerhub-repo/reservation-service:${params.IMAGE_TAG}'
+                        bat 'docker push your-dockerhub-repo/reservation-service:${params.IMAGE_TAG}'
                     }
                 }
             }
@@ -48,7 +48,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sh 'docker-compose up -d'
+                    bat 'docker-compose up -d'
                 }
             }
         }
