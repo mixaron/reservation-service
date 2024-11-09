@@ -30,7 +30,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    bat 'docker build -t mixaron/reservation-service:${params.IMAGE_TAG} .'
+                    bat 'docker build -t mixaron/reservation-service:v1.0 .'
                 }
             }
         }
@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-hub-credentials', url: '') {
-                        bat 'docker push your-dockerhub-repo/reservation-service:${params.IMAGE_TAG}'
+                        bat 'docker push your-dockerhub-repo/reservation-service:v1.0'
                     }
                 }
             }
