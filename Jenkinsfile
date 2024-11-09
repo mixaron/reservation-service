@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-hub-credentials', url: '') {
-                        bat 'docker push your-dockerhub-repo/reservation-service:v1.0'
+                        bat 'docker push mixaron/reservation-service:v1.0'
                     }
                 }
             }
