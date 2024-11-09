@@ -9,9 +9,9 @@ spring:
     password: 123123
   application:
     name: reservation-service
-#  jpa:
-#    hibernate:
-#      ddl-auto: create
+  jpa:
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
 eureka:
   client:
     serviceUrl:
